@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html style="height: auto; min-height: 100%;" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+        游戏火车</title>
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="static/css/font-awesome.min_1.css"/>
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="static/css/font-awesome-ie7.min.css"/><![endif]-->
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="static/css/ace-ie.min.css"/><![endif]--><!--[if lt IE 9]>
+    <script src="static/js/html5shiv.js"></script>
+    <script src="static/js/respond.min.js"></script><![endif]-->
+    <link rel="stylesheet" href="static/css/ionicons.min.css">
+    <link rel="stylesheet" href="static/css/adminlte.min.css">
+    <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.min.js"></script>
+    <script src="static/js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="static/css/font.css">
+    <link rel="stylesheet" href="static/css/base.css"/>
+    <script src="static/js/jquery.min.js"></script>
+    <link href="static/css/normalize.min.css" rel="stylesheet">
+    <link href="static/css/bootstrap.min_1.css" rel="stylesheet">
+    <script src="static/js/bootstrap.min.js"></script>
+    <link href="static/css/font-awesome.css" rel="stylesheet">
+
+
+
+    
+
+
+    <script type="text/javascript" src="static/js/bootstrap-notify.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/loaders.min.css" />
+    <script type="text/javascript" src="static/js/loaders.css.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/css/toastr.css" />
+
+
+    <script src="static/js/toastr.js"></script>
+
+
+</head>
+<body class="skin-blue layout-top-nav" style="height: auto; min-height: 100%;">
+<header class="main-header">
+    <nav class="navbar navbar-static-top">
+
+
+
+
+                    
+
+                </ul>
+            </div>
+
+          
+            <div class="CheckCards">
+                <center><h2>查询所需数量</h2></center>
+                <div class="Check-Box">
+                    <div class="Check-Title">
+
+                        
+                        <h3 style="font-weight: 600;margin-bottom: 5px;color: #4ea2d3;">STEAM等级计算器</h3>
+
+                        <!--
+                        <p class="tolevel">您目前的等级</p><input class="nowlevel"
+                                                            style="border:2px solid black;background-color:transparent;"
+                                                            type="number" min="0" max="9999"
+                                                            length="4"
+                                                            onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
+                                                            onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')">
+                        <p class="tolevel" style="margin-left:5px;">需求目标等级</p><input class="tolevel input-standard-grey"
+                                                                                     style="border:2px solid black;background-color:transparent;"
+                                                                                     type="number" min="0"
+                                                                                     max="9999" length="4"
+                                                                                     onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
+                                                                                     onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')">
+
+                                                                                     -->
+
+                    </div>
+
+                    <div class="Check-Title">
+
+                        <p class="tolevel"  style="">买家当前的Steam等级</p><input class="nowlevel"
+                                                            style="border:2px solid black;background-color:transparent; "
+                                                            type="number" min="0" max="9999"
+                                                            length="4"
+                                                            onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
+                                                            onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')">
+                        <p class="tolevel" style="margin-left:5px;">需求目标等级</p><input class="tolevel input-standard-grey"
+                                                                                     style="border:2px solid black;background-color:transparent;"
+                                                                                     type="number" min="0"
+                                                                                     max="9999" length="4"
+                                                                                     onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
+                                                                                     onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')">
+                    </div>
+                    <div class="Check-Content">
+                        <div class="content-box">
+                            <div class="Cards-info">
+                                <div class="container">
+                                    <center class="CheckCards-cellback">
+                                        <div class="row" style="display: inline;">
+                                            <div class="col-md-4">
+                                                <p class="Cards-info" id="needxp">0</p>
+                                                <p class="Cards-info-title">升级需要套数</p>
+                                            </div>
+
+
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+
+                                    
+                                        </div>
+                                    </center>
+
+  
+
+ 
+
+
+        </div>
+    </a>
+</div>
+
+
+
+
+    <script>
+        //  $("#Remind").show();
+       //  $("#TradeLink").show();
+
+
+        var steamlvnow;
+        var tosteamlvnow;
+        var tradelink;
+        //$("#GetTrade").show();
+        function showError(errormessage) {
+            $('#Reminddiv').text(errormessage);
+            $("#Remind").show();
+            toastr.error(errormessage);
+
+        }
+
+        function hideError() {
+            $('#Reminddiv').text("");
+            $("#Remind").hide();
+        }
+
+        function CheckBuyNum() {
+            $(".Buy-Num-Cellback").html('<div class="loader-inner ball-pulse-sync"><div></div><div></div><div></div></div>');
+            $('button#CheckBuyNum').attr('disabled', "true");//添加disabled属性
+
+
+            var postData = {
+                "type": 1
+            }
+            // 验证是否通过
+            $.post("/index.php/Home/Index/checkBuyNum", postData, function (data) {
+                $('button#CheckBuyNum').removeAttr("disabled");
+                if (data == null) {
+                    showError("请求失败 请再次尝试");
+                } else if (data["success"]) {
+                    $("#hismaxset").html(data['botsets']);
+                    $("#botnsets").html(data['botsets']);
+                    $("#gamenum").html(data['gamenum']);
+                    $(".Buy-Num-Cellback").html("");
+
+
+                } else if (!data["success"]) {
+                    $(".Buy-Num-Cellback").html(data['error']);
+                }
+                $('button#CheckBuyNum').removeAttr("disabled");
+            });
+
+        }
+
+
+ 
+
+
+        function parseURL(url) {
+            var a = document.createElement('a');
+            a.href = url;
+            return {
+                source: url,
+                protocol: a.protocol.replace(':', ''),
+                host: a.hostname,
+                port: a.port,
+                query: a.search,
+                params: (function () {
+                    var ret = {},
+                            seg = a.search.replace(/^\?/, '').split('&'),
+                            len = seg.length, i = 0, s;
+                    for (; i < len; i++) {
+                        if (!seg[i]) {
+                            continue;
+                        }
+                        s = seg[i].split('=');
+                        ret[s[0]] = s[1];
+                    }
+                    return ret;
+                })(),
+                file: (a.pathname.match(/\/([^\/?#]+)$/i) || [, ''])[1],
+                hash: a.hash.replace('#', ''),
+                path: a.pathname.replace(/^([^\/])/, '/$1'),
+                relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [, ''])[1],
+                segments: a.pathname.replace(/^\//, '').split('/')
+            };
+        }
+
+
+        $('input.nowlevel').bind('input propertychange', function () {
+            //console.log($(this).val());
+            if ($("input.nowlevel").val() != "") {
+                if ($("input.tolevel").val() != "") {
+                    if (parseInt($("input.nowlevel").val()) < parseInt($("input.tolevel").val())) {
+                        //console.log("AJAX GO~");
+                        getMoney($("input.nowlevel").val(), $("input.tolevel").val());
+                    }
+                    else {
+                        $("p.Cards-info#needxp").html(0);
+                        $("p.Cards-info#totalmoney").html(0);
+                        $("p.Cards-info#totalbuycout").html(0);
+                        $("p.Cards-info#avgprice").html(0);
+                        $("p.Cards-info#showarea").html(0);
+                        $("p.Cards-info#maxfriend").html(0);
+
+
+                    }
+                }
+            }
+        });
+        $('input.tolevel').bind('input propertychange', function () {
+            //console.log($(this).val());
+            if ($("input.nowlevel").val() != "") {
+                if ($("input.tolevel").val() != "") {
+                    if (parseInt($("input.nowlevel").val()) < parseInt($("input.tolevel").val())) {
+                        //console.log("AJAX GO~");
+                        getMoney($("input.nowlevel").val(), $("input.tolevel").val());
+                    } else {
+                        $("p.Cards-info#needxp").html(0);
+                        $("p.Cards-info#totalmoney").html(0);
+                        $("p.Cards-info#totalbuycout").html(0);
+                        $("p.Cards-info#avgprice").html(0);
+                        $("p.Cards-info#showarea").html(0);
+                        $("p.Cards-info#maxfriend").html(0);
+
+
+                    }
+                }
+            }
+        });
+
+
+        function GetXPFromLevel(target_level) {
+            var countX = 0;
+            var xp = 0;
+            var countY;
+            var level;
+            if (target_level == 0) {
+                return 0;
+            }
+            while (countX < 1200) {
+                countY = 1;
+                while (countY <= 10) {
+                    level = countX * 10 + countY;
+
+                    xp = xp + countX + 1;
+
+                    countY = countY + 1;
+
+                    if (target_level == level) {
+                        return xp * 100;
+                    }
+                }
+                countX = countX + 1;
+            }
+        }
+
+
+        function AutoGetMoney(nowlevel, tolevel, level) {
+
+
+            if (parseInt(nowlevel) > parseInt(tolevel)) {
+                // console.log(tolevel +"---"+nowlevel+"---"+ nowlevel>tolevel);
+                return 0;
+            }
+            var needxp = GetXPFromLevel(tolevel) - GetXPFromLevel(nowlevel);
+
+            //  console.log(tolevel +"---"+nowlevel+"---" +needxp+"---"+level);
+            var needcard = parseInt(needxp / 100);
+            var finnalprice = 0;
+            if (parseInt(tolevel) > parseInt(pricelevel[level])) {
+     
+                if (parseInt(nowlevel) >= parseInt(pricelevel[level])) {
+                    finnalprice = needcard * price[level];
+                } else {
+                    finnalprice = AutoGetMoney(nowlevel, pricelevel[level], level - 1) + AutoGetMoney(pricelevel[level], tolevel, level);
+                }
+            } else {
+
+                finnalprice = AutoGetMoney(nowlevel, tolevel, level - 1)
+            }
+
+            return finnalprice;
+        }
+
+        var price=[0.8,0.8,0.8,0.9,1.05,1.2,1.3,1.65,1.65,1.65,1.65]    ;
+        var pricelevel=[0,10,40,100,130,150,200,250,300,500,9999]  ;
+
+
+
+        function getMoney(nowlevel, tolevel) {
+            var needxp = GetXPFromLevel(tolevel) - GetXPFromLevel(nowlevel);
+            //console.log("xp：" + needxp);
+
+            var finnalprice = 0;
+
+
+            finnalprice = AutoGetMoney(nowlevel, tolevel, 10);
+
+
+            var needcard = parseInt(needxp / 100);
+            var levelcg = tolevel - nowlevel;
+            var friendmax = 255 + 5 * (tolevel - 1);
+            var n1 = nowlevel - (nowlevel % 10);
+            var n2 = tolevel - (tolevel % 10);
+            var showarea = (n2 - n1) / 10;
+
+            var totalbuycout = Math.ceil(finnalprice / 0.5)
+            var needmoney = totalbuycout * 0.5;  // (needcard * 0.8).toFixed(2);
+
+            var avgprice = (needmoney / needcard).toFixed(3);
+            $("p.Cards-info#needxp").html(needcard);
+            $("p.Cards-info#totalmoney").html(needmoney);
+            $("p.Cards-info#totalbuycout").html(totalbuycout);
+            $("p.Cards-info#avgprice").html(avgprice);
+            $("p.Cards-info#showarea").html(showarea);
+            $("p.Cards-info#maxfriend").html(friendmax);
+        }
+
+    </script>
+
+
+<script>
+    $(function () {
+        $('.b-has-child .active').parents('.b-has-child').eq(0).find('.b-nav-parent').click();
+    })
+</script>
+<script defer src="static/js/7b82f3ce4528408d97b64a9c93af574d.js" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" data-cf-beacon='{"rayId":"774b5f1fc9470ed0","version":"2022.11.3","r":1,"token":"cf5b04732db340ee8403914100574e88","si":100}' crossorigin="anonymous"></script>
+</body>
+
+
+</html>
